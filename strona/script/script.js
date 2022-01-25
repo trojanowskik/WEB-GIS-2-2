@@ -7,8 +7,9 @@ require([
     'esri/renderers/SimpleRenderer',
     'esri/renderers/visualVariables/VisualVariable',
     'esri/renderers/visualVariables/SizeVariable',
+    'esri/widgets/Legend',
 
-  ], (Map, SceneView,FeatureLayer,Graphic, GraphicsLayer, SimpleRenderer, VisualVariable, SizeVariable)=>{
+  ], (Map, SceneView,FeatureLayer,Graphic, GraphicsLayer, SimpleRenderer, VisualVariable, SizeVariable, Legend)=>{
 
   const fl = new FeatureLayer({
       url: "https://services.arcgis.com/ue9rwulIoeLEI9bj/ArcGIS/rest/services/Earthquakes/FeatureServer/0"
@@ -29,7 +30,19 @@ require([
     center:[-101.331313, 39.172149]
   });  
 
-  const geom = {
+  const legend = new Legend({
+    view: view,
+    layerInfos: [
+      {
+        layer: fl
+      }
+    ]
+    
+  });
+
+  view.ui.add(legend, {position: "bottom-right"});
+
+  /*const geom = {
     type: "point",
     longitude: 25,
     latitude: 52
@@ -54,7 +67,7 @@ require([
     geometry: geom,
     symbol: symbol,
     attributes: attr,
-  });
+  });*/
 /*
   gl.add(graph);
   
