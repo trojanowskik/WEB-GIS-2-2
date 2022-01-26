@@ -63,8 +63,8 @@ require([
   const getResults = (features) => {
     let symbol = {
       type: 'simple-marker',
-      size: 15,
-      color: "green",
+      size: 10,
+      color: "blue",
       style: "circle"
     };
     
